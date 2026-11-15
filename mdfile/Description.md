@@ -53,6 +53,4 @@ npx playwright test
 - Favourites, product filters and sorting, contact form, account editing. They are outside the five required cases.
 - Cross-browser runs. Only Chromium is configured.
 
-## Link to the repository
 
-TODO: https://github.com/<your-username>/<your-repository>
