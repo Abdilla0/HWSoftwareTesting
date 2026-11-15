@@ -47,18 +47,21 @@ export class RegisterPage extends BasePage {
     await this.postalCode.fill(user.postalCode);
     await this.houseNumber.fill(user.houseNumber);
 
-    // Street / city / state are auto-filled from postal code + house number.
-    // We fill them AFTER, so our values are the ones that stay.
-    await this.street.fill(user.street);
-    await this.city.fill(user.city);
-    await this.state.fill(user.state);
+    // The site looks up the address from postal code + house number and
+    // auto-fills street/city/state, sometimes more than once, at unpredictable
+    // times. Typing our own values races with those lookups (flaky test).
+    // The tests only need a registered user, not a specific street, so we
+    // accept the auto-filled address and just wait until it is there.
+    await expect(this.street).not.toHaveValue('');
+    await expect(this.city).not.toHaveValue('');
+    await expect(this.state).not.toHaveValue('');
 
     await this.phone.fill(user.phone);
     await this.email.fill(user.email);
     await this.password.fill(user.password);
 
     await expect(this.houseNumber).toHaveValue(user.houseNumber);
-    await expect(this.street).toHaveValue(user.street);
+    await expect(this.street).not.toHaveValue('');
     await this.submit.click();
   }
 }

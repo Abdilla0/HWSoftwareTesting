@@ -4,3 +4,6 @@ playwright-report/
 blob-report/
 playwright/.cache/
 playwright/.auth/
+reports/
+all-blob-reports/
+.act-artifacts/

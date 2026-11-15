@@ -16,11 +16,6 @@ export interface User extends Credentials {
   phone: string;
 }
 
-/** A seeded account that already exists on the Toolshop. */
-export const existingCustomer: Credentials = {
-  email: 'customer@practicesoftwaretesting.com',
-  password: 'welcome01',
-};
 
 /** Fresh user on every call: unique email, so reruns never collide. */
 export function createUser(): User {
