@@ -10,7 +10,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: isCI,                // a forgotten test.only fails CI
   retries: isCI ? 2 : 0,           // a flaky test is retried in CI only
-  workers: isCI ? 1 : undefined,   // 1 worker in CI: fewer requests, less Cloudflare blocking
+  workers: isCI ? 2 : undefined,   // GitHub machines are small: 2 workers
   reporter: isCI
     ? [
         ['list'],
